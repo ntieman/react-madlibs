@@ -1,28 +1,28 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { ApolloProvider } from 'react-apollo';
+import ApolloClient from 'apollo-boost';
+import Home from './Home';
+import MadLib from './MadLib';
 import './App.css';
 
+const client = new ApolloClient({
+    uri: window.location.protocol + '//' + window.location.host + '/graphql'
+});
+
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+    render() {
+        return (
+            <ApolloProvider client={client}>
+                <Router>
+                    <div className="App">
+                        <Route exact path="/" component={Home} />
+                        <Route path="/madlib/:id/" component={MadLib} />
+                    </div>
+                </Router>
+            </ApolloProvider>
+        );
+    }
 }
 
 export default App;

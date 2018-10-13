@@ -1,32 +1,131 @@
+body {
+
+}
+
+body:after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffa84c+0,ff7b0d+100;Orange+3D */
+    background: #ffa84c; /* Old browsers */
+    background: -moz-linear-gradient(top, #ffa84c 0%, #ff7b0d 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #ffa84c 0%,#ff7b0d 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #ffa84c 0%,#ff7b0d 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffa84c', endColorstr='#ff7b0d',GradientType=0 ); /* IE6-9 */
+}
+
 .App {
-  text-align: center;
+    position: relative;
+    max-width: 40em;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 3em;
+    background-color: white;
+    box-sizing: border-box;
+    font-family: Courier, Arial, sans-serif;
+    line-height: 2;
+    z-index: 2;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+h1 {
+    font-weight: normal;
+    border-bottom: 2px #aaaaaa dashed;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+ul {
+    list-style-type: none;
 }
 
-.App-link {
-  color: #61dafb;
+li a {
+    display: inline-block;
+    border-bottom: 2px #aaaaaa dashed;
+    font-size: 1.2em;
+    text-decoration: none;
+    transition: border-color .25s ease-in-out;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+li a:hover {
+    border-color: #333333;
+}
+
+label {
+    display: block;
+    margin-bottom: 1em;
+    line-height: 1;
+}
+
+label span {
+    display: inline-block;
+    min-width: 7em;
+    margin-right: 1em;
+    margin-bottom: .5em;
+    font-size: 1.2em;
+}
+
+label input {
+    font-size: 1.2em;
+    padding: .25em .5em;
+    background: none;
+    border: 1px #aaaaaa solid;
+    border-radius: .25em;
+    box-sizing: border-box;
+}
+
+button {
+    display: inline-block;
+    margin-left: .5em;
+    margin-bottom: .5em;
+    padding: .5em 2em;
+    border: none;
+    background-color: #ee5555;
+    color: #ffffff;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1em;
+    text-transform: uppercase;
+    transition: background-color .25s ease-in-out;
+}
+
+button[disabled] {
+    background-color: #ee9999;
+}
+
+button:hover {
+    background-color: #cc1111;
+}
+
+button[disabled]:hover {
+    cursor: default;
+    background-color: #ee9999;
+}
+
+button:first-child {
+    margin-left: 0;
+}
+
+@media (max-width: 30em) {
+    ul {
+        padding-left: 0;
+    }
+
+    label span {
+        margin-bottom: .2em;
+    }
+
+    label input {
+        width: 100%;
+    }
+
+    button {
+        display: block;
+        width: 100%;
+        padding: 1em;
+        margin-left: 0;
+        margin-bottom: 1em;
+    }
 }

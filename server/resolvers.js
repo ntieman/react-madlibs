@@ -30,6 +30,10 @@ const musicDir = path.join(__dirname, '..', 'music');
 const songs = [];
 
 fs.readdirSync(musicDir).forEach(file => {
+    if(file.indexOf('.mp3') === -1) {
+        return;
+    }
+
     const filePath = path.join(musicDir, file);
 
     songs.push({
@@ -45,6 +49,10 @@ const words = [];
 const capitalize = (word) => word.substr(0, 1).toUpperCase() + word.substr(1);
 
 fs.readdirSync(wordsDir).forEach(file => {
+    if(file.indexOf('.txt') === -1) {
+        return;
+    }
+    
     const filePath = path.join(wordsDir, file);
     const text = fs.readFileSync(filePath, 'utf8');
     const wordType = file.replace('.txt', '');

@@ -68,10 +68,15 @@ class MadLib extends Component {
 
         if(this.autoSpeak) {
             this.autoSpeak = false;
-            
-            setTimeout(() => {
+
+            this.autoSpeakTimeout = setTimeout(() => {
+                this.autoSpeakTimeout = false;
                 this.speak();
             }, 3000);
+        } else {
+            if(this.autoSpeakTimeout) {
+                clearTimeout(this.autoSpeakTimeout);
+            }
         }
     }
 
@@ -134,6 +139,10 @@ class MadLib extends Component {
         const insertVoice = voices[0];
 
         synth.cancel();
+
+        if(!this.speechArea.current || !this.speechArea.current.textContent) {
+            return;
+        }
 
         if(this.state.continuous) {
             const utterance = new SpeechSynthesisUtterance(this.speechArea.current.textContent);
@@ -224,7 +233,7 @@ class MadLib extends Component {
 
     renderDisplay() {
         let { title, text, tokens } = this.madLib;
-        let renderedText = '<h1>'  + title + '</h1>';
+        let renderedText = '';
         let parsedText = [];
 
         if(tokens.length) {
@@ -272,6 +281,7 @@ class MadLib extends Component {
         }
 
         return <div>
+            <h1>{title}</h1>
             <div ref={this.speechArea} dangerouslySetInnerHTML={{ __html: renderedText }} />
             <audio ref={this.audio} controls loop autoPlay volume="0.25">
                 <source type="audio/mpeg" src={this.song.uri} />

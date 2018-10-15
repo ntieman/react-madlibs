@@ -67,8 +67,11 @@ class MadLib extends Component {
         }
 
         if(this.autoSpeak) {
-            this.speak();
             this.autoSpeak = false;
+            
+            setTimeout(() => {
+                this.speak();
+            }, 3000);
         }
     }
 

@@ -137,6 +137,11 @@ class MadLib extends Component {
 
             utterance.voice = normalVoice;
             utterance.pitch = .25 + Math.random() * 1.75;
+
+            utterance.onend = () => {
+                this.setState({ speaking: false });
+            };
+
             synth.speak(utterance);
         } else {
             const parsedText = this.parsedText;
